@@ -1,0 +1,44 @@
+.keyboard{
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(3, 40px);
+    grid-gap: 10px;
+    justify-items: center;
+    justify-content: center;
+}
+
+.keyButtonWrong{
+    text-align: center;
+    padding: 10px;
+    border: none;
+    background-color: rgb(174, 110, 110);
+    border: 1px solid rgb(174, 110, 110);
+    border-radius: 5px;
+}
+
+.keyButtonRignt{
+    text-align: center;
+    padding: 10px;
+    border: none;
+    background-color: rgb(106, 211, 106);
+    border: 1px solid rgb(106, 211, 106);
+    border-radius: 5px;
+}
+
+
+.keyButton{
+    text-align: center;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    border: 1px solid rgb(15, 15, 15);
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.keyButton:hover{
+    padding: 15px;
+    border: 1px solid rgb(234, 202, 142);
+    border-radius: 5px;
+    transition: 0.3s;
+}

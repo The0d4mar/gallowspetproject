@@ -1,0 +1,36 @@
+.headerBlock{
+    margin:10px 0 100px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.headerTitleBlock{
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.headerGameSettings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+}
+.headerLevelChoose{
+    margin-bottom: 40px;
+}
+.levelValue{
+    font-weight: 600;
+}
+
+.startGame{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px 32px;
+    font-size: 20px;
+    font-weight: 400;
+    background-color: transparent;
+}
