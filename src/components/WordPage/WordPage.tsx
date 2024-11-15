@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import classes from '../../styles/lightVersion/wordPage.module.css';
+import Hangman from "../hangman/Hangman";
 
 interface WordPageProps {
     inputWord: string;
@@ -13,6 +14,7 @@ const WordPage: FC<WordPageProps> = ({ inputWord, chosenLetter ='', addWrongBtn,
     const [inputLetter, setInputLetter] = useState<string>(chosenLetter);
     const [closedWordArray, setClosedWordArray] = useState<string[]>([]); // Храним состояние закрытого слова
     const [lifes, setLifes] = useState<any>(6)
+    const [mistakes, setMistakes] = useState<number>(0)
     const [wrongLetter, setWrongLetter] = useState<string[]>([]);
 
     useEffect(() => {
@@ -31,6 +33,7 @@ const WordPage: FC<WordPageProps> = ({ inputWord, chosenLetter ='', addWrongBtn,
         setWord(inputWord);
         setClosedWordArray(Array(inputWord.length).fill('*'));
         setLifes(6);
+        setMistakes(0)
     }, [inputWord])
 
 
@@ -42,6 +45,7 @@ const WordPage: FC<WordPageProps> = ({ inputWord, chosenLetter ='', addWrongBtn,
         if(wordArray.indexOf(inputLetter) == -1 && inputLetter != '' && lifes > 0){
             if(wrongLetter.indexOf(inputLetter) == -1){
             setLifes(lifes - 1);
+            setMistakes((prev) => prev + 1);;
             setWrongLetter([...wrongLetter, inputLetter]);
             addWrongBtn(inputLetter);
             }
@@ -91,6 +95,13 @@ const WordPage: FC<WordPageProps> = ({ inputWord, chosenLetter ='', addWrongBtn,
             <div className={classes.errorCount}>
                 {lifes != 'Вы победили' && lifes != 'Вы проиграли' ? `Количество жизней: ${lifes}` : lifes}
             </div>
+
+            <Hangman
+                mistakes={mistakes} 
+                maxMistakes={6}
+            
+            />
+
         </div>
     );
 }

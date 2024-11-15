@@ -15,13 +15,13 @@ function App() {
     setLetter(chosenLetter.toLocaleLowerCase());
   };
 
-  const startFunc = (level: number) =>{
+  const startFunc = (level: number) => {
     setHardLevel(level);
-    aWorld();
-    console.log(genereateWord)
-    setWrongKeyBtn([]);
-    setRightKeyBtn([]);
-  }
+    aWorld(); // Сгенерировать новое слово
+    setWrongKeyBtn([]); // Сбросить неправильные буквы
+    setRightKeyBtn([]); // Сбросить правильные буквы
+};
+
 
   const addWrongBtn = (letter: string) => {
     setWrongKeyBtn((prev) => [...prev, letter.toLocaleLowerCase()]);

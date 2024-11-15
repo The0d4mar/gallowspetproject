@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import classes from '../../styles/lightVersion/keyboard.module.css';
 
 interface KeyButtonProps {
@@ -8,25 +8,24 @@ interface KeyButtonProps {
 }
 
 const KeyButton: FC<KeyButtonProps> = ({ letter, onClicked, specialIndex }) => {
-    const [index, setIndex] = useState(specialIndex);
+    // Класс кнопки определяется только на основе пропсов
+    const buttonClass =
+        specialIndex === -1
+            ? classes.keyButtonWrong
+            : specialIndex === 1
+            ? classes.keyButtonRignt
+            : classes.keyButton;
 
-    useEffect(() => {
-        setIndex(specialIndex);
-    }, [specialIndex]);
-    // Изменяем тип параметра 'clicked' на 'React.MouseEvent<HTMLButtonElement>'
-    function clicked(event: React.MouseEvent<HTMLButtonElement>) {
-        onClicked(letter); // передаем 'letter' при клике
-        console.log(specialIndex)
-    }
+    const clicked = () => {
+        onClicked(letter); // Всегда вызываем onClicked при нажатии
+    };
 
     return (
-        index == -1?
-        (<button className={classes.keyButtonWrong} onClick={clicked}>
+        <button className={buttonClass} onClick={clicked}>
             {letter}
-        </button>) : 
-        index == 1 ?(<button className={classes.keyButtonRignt} onClick={clicked}> {letter} </button>): 
-        (<button className={classes.keyButton} onClick={clicked}>{letter} </button>)  
+        </button>
     );
-}
+};
 
 export default KeyButton;
+
